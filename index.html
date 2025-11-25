@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Family-owned property management, handyman, snow removal, junk removal, landscaping, and hardscaping services serving North Shore MA and Southern NH.">
+  <title>J&G Walker Properties LLC | Property Management & Home Services | North Shore MA & Southern NH</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --navy: #1a3c5e;
+      --light-blue: #e8f1f8;
+      --accent: #e67e22;
+      --gray: #555;
+      --light-gray: #f8f9fa;
+    }
+
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body {
+      font-family:'Montserrat', sans-serif;
+      line-height:1.6;
+      color:#333;
+      background:#fff;
+      scroll-behavior:smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family:'Playfair Display', serif;
+      color:var(--navy);
+    }
+
+    a {
+      text-decoration:none;
+      color:var(--accent);
+    }
+
+    img {
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .text-center { text-align:center; }
+
+    /* Header */
+    header {
+      background:var(--navy);
+      color:white;
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      max-width:1200px;
+      margin:auto;
+      padding:0.75rem 1.5rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo {
+      font-size:1.6rem;
+      font-weight:700;
+      letter-spacing:0.03em;
+    }
+
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:1.5rem;
+    }
+
+    .nav-links a {
+      color:white;
+      font-weight:600;
+      font-size:0.95rem;
+      position:relative;
+      padding-bottom:0.2rem;
+      transition:0.3s;
+    }
+
+    .nav-links a::after {
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color:var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width:100%;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display:none;
+      background:transparent;
+      border:none;
+      color:white;
+      font-size:1.5rem;
+      cursor:pointer;
+    }
+
+    /* Layout helpers */
+    main {
+      margin-top:70px; /* offset for fixed header */
+    }
+
+    section {
+      padding:5rem 0;
+      scroll-margin-top:90px; /* smooth anchor positioning */
+    }
+
+    .container {
+      max-width:1200px;
+      margin:auto;
+      padding:0 1.5rem;
+    }
+
+    .section-title {
+      text-align:center;
+      font-size:2.4rem;
+      margin-bottom:2.5rem;
+      position:relative;
+    }
+
+    .section-title::after {
+      content:'';
+      width:80px;
+      height:4px;
+      background:var(--accent);
+      position:absolute;
+      bottom:-15px;
+      left:50%;
+      transform:translateX(-50%);
+      border-radius:10px;
+    }
+
+    .section-subtitle {
+      text-align:center;
+      max-width:650px;
+      margin:1.5rem auto 0;
+      color:var(--gray);
+      font-size:1rem;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(26,60,94,0.85),rgba(26,60,94,0.85)),
+                  url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2073&q=80')
+                  center/cover no-repeat;
+      min-height:80vh;
+      display:flex;
+      align-items:center;
+      color:white;
+    }
+
+    .hero-content {
+      max-width:900px;
+      margin:auto;
+      padding:2.5rem 1.5rem;
+      text-align:center;
+    }
+
+    .hero-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      background:rgba(255,255,255,0.12);
+      padding:0.4rem 0.9rem;
+      border-radius:999px;
+      font-size:0.85rem;
+      margin-bottom:1.2rem;
+    }
+
+    .hero-badge i {
+      color:var(--accent);
+    }
+
+    .hero h1 {
+      font-size:3rem;
+      margin-bottom:1rem;
+    }
+
+    .hero p {
+      font-size:1.1rem;
+      margin-bottom:2rem;
+      color:#f3f4f6;
+    }
+
+    .hero-cta-group {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:1rem;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.4rem;
+      background:var(--accent);
+      color:white;
+      padding:0.85rem 1.8rem;
+      border-radius:999px;
+      font-weight:600;
+      font-size:0.95rem;
+      border:none;
+      cursor:pointer;
+      transition:0.3s;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+
+    .btn i {
+      font-size:0.9rem;
+    }
+
+    .btn:hover {
+      background:#d35400;
+      transform:translateY(-1px);
+      box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-secondary {
+      background:transparent;
+      border:1.5px solid #fff;
+    }
+
+    .btn-secondary:hover {
+      background:rgba(255,255,255,0.1);
+      box-shadow:none;
+      transform:translateY(-1px);
+    }
+
+    /* Services */
+    #services {
+      background:#fff;
+    }
+
+    .services-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:2rem;
+      margin-top:3rem;
+    }
+
+    .service-card {
+      background:white;
+      padding:2rem 1.8rem;
+      border-radius:14px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.06);
+      text-align:left;
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(230,126,34,0.05), transparent);
+      opacity:0;
+      transition:opacity 0.3s ease;
+      pointer-events:none;
+    }
+
+    .service-card:hover {
+      transform:translateY(-8px);
+      box-shadow:0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .service-card:hover::before {
+      opacity:1;
+    }
+
+    .service-icon {
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      background:var(--light-blue);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:1.2rem;
+    }
+
+    .service-icon i {
+      font-size:1.6rem;
+      color:var(--accent);
+    }
+
+    .service-card h3 {
+      margin-bottom:0.6rem;
+      font-size:1.2rem;
+    }
+
+    .service-card p {
+      font-size:0.95rem;
+      color:var(--gray);
+    }
+
+    .service-tagline {
+      margin-top:0.5rem;
+      font-size:0.85rem;
+      font-weight:600;
+      color:var(--navy);
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+    }
+
+    /* About */
+    .about {
+      background:var(--light-gray);
+    }
+
+    .about-content {
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:3rem;
+      align-items:center;
+    }
+
+    .about-text {
+      font-size:1rem;
+      color:var(--gray);
+    }
+
+    .about-text p + p {
+      margin-top:1rem;
+    }
+
+    .about-highlight {
+      display:flex;
+      flex-wrap:wrap;
+      gap:1.5rem;
+      margin-top:1.8rem;
+    }
+
+    .about-highlight-item {
+      display:flex;
+      align-items:flex-start;
+      gap:0.6rem;
+      font-size:0.95rem;
+    }
+
+    .about-highlight-item i {
+      color:var(--accent);
+      margin-top:0.15rem;
+    }
+
+    .about-image-wrapper {
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+      position:relative;
+    }
+
+    .about-badge {
+      position:absolute;
+      bottom:1rem;
+      left:1rem;
+      background:rgba(26,60,94,0.9);
+      color:#fff;
+      padding:0.6rem 1rem;
+      border-radius:999px;
+      font-size:0.8rem;
+      display:flex;
+      align-items:center;
+      gap:0.4rem;
+    }
+
+    .about-badge i {
+      color:var(--accent);
+    }
+
+    /* Service Areas */
+    .areas {
+      margin-top:2rem;
+    }
+
+    .areas ul {
+      columns:3;
+      list-style:none;
+      margin-top:1.5rem;
+      gap:1rem;
+    }
+
+    .areas li {
+      padding:0.35rem 0;
+      position:relative;
+      padding-left:1.4rem;
+      font-size:0.95rem;
+      color:var(--gray);
+    }
+
+    .areas li::before {
+      content:"✓";
+      color:var(--accent);
+      font-weight:bold;
+      position:absolute;
+      left:0;
+      top:0;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background:linear-gradient(135deg, #13273b, #1a3c5e);
+      color:white;
+    }
+
+    .testimonial-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:2rem;
+      margin-top:3rem;
+    }
+
+    .testimonial {
+      background:rgba(255,255,255,0.06);
+      padding:1.8rem;
+      border-radius:14px;
+      font-style:italic;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .testimonial::before {
+      content:'“';
+      position:absolute;
+      font-size:4rem;
+      color:rgba(255,255,255,0.08);
+      top:-0.8rem;
+      left:0.7rem;
+    }
+
+    .testimonial p {
+      position:relative;
+      z-index:1;
+      font-size:0.96rem;
+    }
+
+    .testimonial-author {
+      margin-top:1.2rem;
+      font-weight:600;
+      font-style:normal;
+      font-size:0.9rem;
+      color:#e5e7eb;
+    }
+
+    /* Contact */
+    .contact {
+      background:var(--light-gray);
+    }
+
+    .contact-info {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:1.8rem;
+      margin-top:3rem;
+    }
+
+    .contact-item {
+      background:white;
+      padding:2rem 1.8rem;
+      border-radius:14px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .contact-item i {
+      font-size:2rem;
+      color:var(--accent);
+      margin-bottom:0.8rem;
+    }
+
+    .contact-item h3 {
+      margin-bottom:0.5rem;
+      font-size:1.1rem;
+    }
+
+    .contact-item p {
+      font-size:0.95rem;
+      color:var(--gray);
+    }
+
+    .contact-item a {
+      font-weight:600;
+    }
+
+    /* Footer */
+    footer {
+      background:var(--navy);
+      color:white;
+      text-align:center;
+      padding:2.5rem 0;
+      font-size:0.9rem;
+    }
+
+    footer p {
+      margin-bottom:0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width:900px) {
+      .about-content {
+        grid-template-columns:1fr;
+      }
+
+      .about-image-wrapper {
+        max-width:520px;
+        margin:0 auto;
+      }
+
+      .hero h1 {
+        font-size:2.4rem;
+      }
+
+      .hero p {
+        font-size:1rem;
+      }
+
+      .areas ul {
+        columns:2;
+      }
+    }
+
+    @media (max-width:768px) {
+      nav {
+        padding:0.75rem 1rem;
+      }
+
+      .nav-toggle {
+        display:block;
+      }
+
+      .nav-links {
+        position:absolute;
+        top:100%;
+        right:0;
+        left:0;
+        background:var(--navy);
+        flex-direction:column;
+        align-items:flex-start;
+        padding:0.75rem 1.25rem 1.25rem;
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        pointer-events:none;
+        transition:max-height 0.3s ease, opacity 0.3s ease;
+      }
+
+      .nav-links a {
+        padding:0.4rem 0;
+        width:100%;
+      }
+
+      .nav-links.open {
+        max-height:260px;
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .hero {
+        min-height:75vh;
+      }
+
+      .hero-badge {
+        font-size:0.8rem;
+      }
+
+      section {
+        padding:4rem 0;
+      }
+    }
+
+    @media (max-width:480px) {
+      .hero h1 {
+        font-size:2rem;
+      }
+
+      .services-grid {
+        gap:1.5rem;
+      }
+
+      .areas ul {
+        columns:1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="logo">J&G Walker Properties LLC</div>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#areas">Service Areas</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-content container">
+        <div class="hero-badge">
+          <i class="fas fa-user-shield"></i>
+          Family-Owned • Fully Licensed & Insured
+        </div>
+        <h1>Property Management & Home Services You Can Trust</h1>
+        <p>Serving the North Shore of Massachusetts and Southern New Hampshire with reliable property care, hands-on management, and a personal touch from our family to yours.</p>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn">
+            <i class="fas fa-phone"></i>
+            Get Your Free Quote
+          </a>
+          <a href="#services" class="btn btn-secondary">
+            <i class="fas fa-list-check"></i>
+            View All Services
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">From full-service property management to one-time cleanups and seasonal work, we provide dependable support for homeowners, landlords, and investors.</p>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h3>Property Management</h3>
+            <p>Full-service rental management for long-term and short-term/Airbnb properties. Tenant screening, rent collection, maintenance coordination, and 24/7 emergency response so you can be fully hands-off.</p>
+            <div class="service-tagline">For landlords & investors</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Handyman & Repairs</h3>
+            <p>From leaky faucets to drywall patches, furniture assembly, trim work, painting, and punch-list items. No job too small and no “we’ll get to it someday” — we get it done.</p>
+            <div class="service-tagline">Tackle your to-do list</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-snowplow"></i>
+            </div>
+            <h3>Snow Removal</h3>
+            <p>Reliable plowing, shoveling, and ice melt application for driveways, walkways, and small commercial lots all winter long. We show up when the storm does.</p>
+            <div class="service-tagline">Residential & light commercial</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-truck-loading"></i>
+            </div>
+            <h3>Junk Removal</h3>
+            <p>Fast removal of furniture, appliances, construction debris, yard waste, and full property cleanouts. Perfect for move-outs, estate sales, and turnover between tenants.</p>
+            <div class="service-tagline">Same-week service available</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Landscaping & Lawn Care</h3>
+            <p>Weekly mowing, edging, trimming, spring/fall cleanups, mulching, and seasonal plantings to keep your property looking sharp from the curb to the backyard.</p>
+            <div class="service-tagline">Seasonal & recurring plans</div>
+          </div>
+
+          <!-- New Hardscaping Service -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-mountain"></i>
+            </div>
+            <h3>Hardscaping & Outdoor Living</h3>
+            <p>Design and installation of patios, walkways, stone steps, retaining walls, and fire pit areas. We combine function and curb appeal to create outdoor spaces that look great and stand up to New England weather.</p>
+            <div class="service-tagline">Patios • Walkways • Walls</div>
+          </div>
+          <!-- End hardscaping -->
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3>Project Management & Remodeling</h3>
+            <p>Coordinate your bathroom or kitchen remodel, unit turnover, or home upgrade with our vetted, licensed contractors. One point of contact from planning through final walkthrough.</p>
+            <div class="service-tagline">Renovations made easier</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>About J&G Walker Properties</h2>
+            <p>We’re two brothers born and raised on the North Shore of Massachusetts. After years of managing our own rental properties and working in construction trades, we started J&G Walker Properties to bring the same care and attention we give our own homes to every client.</p>
+            <p>We’re fully insured, local, and on-site — not a faceless national company. When you call, you’re talking directly to the people who will be at your property.</p>
+            <p><strong>Our promise:</strong> 100% satisfaction guaranteed or we make it right — no excuses.</p>
+
+            <div class="about-highlight">
+              <div class="about-highlight-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Hands-on owners who answer the phone and show up to the job.</span>
+              </div>
+              <div class="about-highlight-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Fully licensed & insured for your peace of mind.</span>
+              </div>
+              <div class="about-highlight-item">
+                <i class="fas fa-clock"></i>
+                <span>Same-day or next-day response on urgent issues.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1581092588608-9426e9e36e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Contractors from J&G Walker Properties on a job site">
+            <div class="about-badge">
+              <i class="fas fa-location-dot"></i>
+              North Shore MA • Southern NH
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section id="areas">
+      <div class="container">
+        <h2 class="section-title">Proudly Serving</h2>
+        <p class="section-subtitle">Based on the North Shore and serving nearby communities in Massachusetts and Southern New Hampshire.</p>
+        <div class="areas">
+          <ul>
+            <li>Lynn</li>
+            <li>Peabody</li>
+            <li>Salem</li>
+            <li>Danvers</li>
+            <li>Beverly</li>
+            <li>Marblehead</li>
+            <li>Swampscott</li>
+            <li>Lynnfield</li>
+            <li>Saugus</li>
+            <li>Wakefield</li>
+            <li>Melrose</li>
+            <li>Revere</li>
+            <li>Nahant</li>
+            <li>Manchester-by-the-Sea</li>
+            <li>Derry, NH</li>
+            <li>Londonderry, NH</li>
+            <li>Salem, NH</li>
+            <li>Nashua, NH</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2 class="section-title" style="color:white;">What Our Clients Say</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <p>"These guys have managed my 6-unit building in Lynn for 3 years. Rent is always on time, tenants love them, and maintenance issues disappear fast. Best decision I ever made."</p>
+            <div class="testimonial-author">— Michael R., Lynn, MA</div>
+          </div>
+          <div class="testimonial">
+            <p>"Needed a full cleanout after an estate sale. They showed up the same day, removed everything, and even swept the place clean. Fair price and super friendly."</p>
+            <div class="testimonial-author">— Susan K., Salem, MA</div>
+          </div>
+          <div class="testimonial">
+            <p>"Reliable snow plowing all winter — never missed a storm and always had our driveway cleared before work. Worth every penny."</p>
+            <div class="testimonial-author">— Tom D., Peabody, MA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Call, text, or email and we’ll get back to you the same day. Tell us a little about your property or project and we’ll follow up with a clear, no-pressure quote.</p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <h3>Call or Text</h3>
+            <p style="font-size:1.3rem;">
+              <a href="tel:617-955-5286">617-955-5286</a>
+            </p>
+            <p>Prefer texting? Send a few photos of your property or project and we’ll respond with next steps.</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email Us</h3>
+            <p>
+              <a href="mailto:jandgwalkerproperties@gmail.com">jandgwalkerproperties@gmail.com</a>
+            </p>
+            <p>Include your town, what you’re looking for, and any timelines or deadlines.</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <h3>Hours</h3>
+            <p>Monday – Saturday: 7:00am – 7:00pm<br>Emergency service available 24/7 for managed properties.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 J&G Walker Properties LLC</p>
+      <p>Fully Licensed & Insured • Serving North Shore MA & Southern NH</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close nav when a link is clicked (mobile)
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
