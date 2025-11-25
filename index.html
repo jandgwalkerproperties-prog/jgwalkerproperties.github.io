@@ -256,6 +256,48 @@
       transform:translateY(-1px);
     }
 
+    /* Quick highlights */
+    .highlights {
+      background:var(--light-gray);
+      margin-top:-3rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .highlights-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:1.2rem;
+      margin-top:-2.5rem;
+    }
+
+    .highlight-card {
+      background:white;
+      padding:1.5rem 1.4rem;
+      border-radius:14px;
+      box-shadow:0 12px 26px rgba(0,0,0,0.08);
+      display:flex;
+      gap:0.8rem;
+      align-items:flex-start;
+    }
+
+    .highlight-card i {
+      color:var(--accent);
+      font-size:1.4rem;
+      margin-top:0.1rem;
+    }
+
+    .highlight-card h3 {
+      margin-bottom:0.35rem;
+      font-size:1.05rem;
+    }
+
+    .highlight-card p {
+      color:var(--gray);
+      font-size:0.92rem;
+      line-height:1.5;
+    }
+
     /* Services */
     #services {
       background:#fff;
@@ -331,6 +373,53 @@
       color:var(--navy);
       text-transform:uppercase;
       letter-spacing:0.08em;
+    }
+
+    /* Process */
+    .process {
+      background:var(--light-gray);
+    }
+
+    .process-steps {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:1.5rem;
+      margin-top:2.4rem;
+    }
+
+    .process-step {
+      background:white;
+      padding:1.8rem 1.5rem;
+      border-radius:14px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.06);
+      position:relative;
+    }
+
+    .process-step .step-number {
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      background:var(--accent);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      position:absolute;
+      top:-18px;
+      left:1.2rem;
+      box-shadow:0 6px 14px rgba(230,126,34,0.35);
+    }
+
+    .process-step h3 {
+      margin-top:0.3rem;
+      margin-bottom:0.5rem;
+      font-size:1.05rem;
+    }
+
+    .process-step p {
+      color:var(--gray);
+      font-size:0.95rem;
     }
 
     /* About */
@@ -425,6 +514,50 @@
       position:absolute;
       left:0;
       top:0;
+    }
+
+    /* FAQ */
+    .faq-items {
+      max-width:850px;
+      margin:2rem auto 0;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+
+    .faq-items details {
+      background:white;
+      border-radius:12px;
+      padding:1.2rem 1.3rem;
+      box-shadow:0 8px 18px rgba(0,0,0,0.05);
+      border:1px solid #e6e9ed;
+    }
+
+    .faq-items summary {
+      font-weight:700;
+      cursor:pointer;
+      position:relative;
+      padding-right:1.8rem;
+      color:var(--navy);
+    }
+
+    .faq-items summary::after {
+      content:'+';
+      position:absolute;
+      right:0.2rem;
+      top:0;
+      color:var(--accent);
+      font-weight:800;
+    }
+
+    .faq-items details[open] summary::after {
+      content:'–';
+    }
+
+    .faq-items p {
+      margin-top:0.75rem;
+      color:var(--gray);
+      line-height:1.55;
     }
 
     /* Testimonials */
@@ -525,6 +658,15 @@
       margin-bottom:0.5rem;
     }
 
+    /* Floating CTA */
+    .floating-cta {
+      position:fixed;
+      right:1.25rem;
+      bottom:1.25rem;
+      z-index:1001;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+    }
+
     /* Responsive */
     @media (max-width:900px) {
       .about-content {
@@ -544,10 +686,14 @@
         font-size:1rem;
       }
 
-      .areas ul {
-        columns:2;
+        .areas ul {
+          columns:2;
+        }
+
+        .highlights-grid {
+          margin-top:-1.5rem;
+        }
       }
-    }
 
     @media (max-width:768px) {
       nav {
@@ -589,14 +735,18 @@
         min-height:75vh;
       }
 
-      .hero-badge {
-        font-size:0.8rem;
-      }
+        .hero-badge {
+          font-size:0.8rem;
+        }
 
-      section {
-        padding:4rem 0;
+        section {
+          padding:4rem 0;
+        }
+
+        .highlight-card {
+          padding:1.2rem 1rem;
+        }
       }
-    }
 
     @media (max-width:480px) {
       .hero h1 {
@@ -616,49 +766,86 @@
 <body>
 
   <!-- Header -->
-  <header>
-    <nav aria-label="Main navigation">
-      <div class="logo">J&G Walker Properties LLC</div>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#areas">Service Areas</a>
-        <a href="#testimonials">Reviews</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="hero-content container">
-        <div class="hero-badge">
-          <i class="fas fa-user-shield"></i>
-          Family-Owned • Fully Licensed & Insured
+    <header>
+      <nav aria-label="Main navigation">
+        <div class="logo">J&G Walker Properties LLC</div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#process">How We Work</a>
+          <a href="#areas">Service Areas</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#contact">Contact</a>
         </div>
-        <h1>Property Management & Home Services You Can Trust</h1>
-        <p>Serving the North Shore of Massachusetts and Southern New Hampshire with reliable property care, hands-on management, and a personal touch from our family to yours.</p>
-        <div class="hero-cta-group">
-          <a href="#contact" class="btn">
-            <i class="fas fa-phone"></i>
-            Get Your Free Quote
-          </a>
-          <a href="#services" class="btn btn-secondary">
-            <i class="fas fa-list-check"></i>
-            View All Services
-          </a>
-        </div>
-      </div>
-    </section>
+      </nav>
+    </header>
 
-    <!-- Services -->
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title">Our Services</h2>
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div class="hero-content container">
+          <div class="hero-badge">
+            <i class="fas fa-user-shield"></i>
+            Family-Owned • Fully Licensed & Insured
+          </div>
+          <h1>Property Management & Home Services You Can Trust</h1>
+          <p>Serving the North Shore of Massachusetts and Southern New Hampshire with reliable property care, hands-on management, and a personal touch from our family to yours.</p>
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn">
+              <i class="fas fa-phone"></i>
+              Get Your Free Quote
+            </a>
+            <a href="#services" class="btn btn-secondary">
+              <i class="fas fa-list-check"></i>
+              View All Services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Highlights -->
+      <section class="highlights" aria-label="Company highlights">
+        <div class="container">
+          <div class="highlights-grid">
+            <div class="highlight-card">
+              <i class="fas fa-bolt"></i>
+              <div>
+                <h3>Same-Day Responses</h3>
+                <p>Send photos and a quick description — we’ll reply the same day with clear next steps.</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <i class="fas fa-house-circle-check"></i>
+              <div>
+                <h3>Hands-On Owners</h3>
+                <p>You speak directly with the owners who show up to the job and ensure it’s done right.</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <i class="fas fa-shield-heart"></i>
+              <div>
+                <h3>Licensed & Insured</h3>
+                <p>Professional crew with full coverage so you’re protected on every project and property.</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <i class="fas fa-snowflake"></i>
+              <div>
+                <h3>New England Ready</h3>
+                <p>Reliable through every season — from snow and ice to spring cleanups and summer curb appeal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services">
+        <div class="container">
+          <h2 class="section-title">Our Services</h2>
         <p class="section-subtitle">From full-service property management to one-time cleanups and seasonal work, we provide dependable support for homeowners, landlords, and investors.</p>
 
         <div class="services-grid">
@@ -716,19 +903,49 @@
             <p>Design and installation of patios, walkways, stone steps, retaining walls, and fire pit areas. We combine function and curb appeal to create outdoor spaces that look great and stand up to New England weather.</p>
             <div class="service-tagline">Patios • Walkways • Walls</div>
           </div>
-          <!-- End hardscaping -->
+            <!-- End hardscaping -->
 
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fas fa-hard-hat"></i>
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-hard-hat"></i>
             </div>
             <h3>Project Management & Remodeling</h3>
             <p>Coordinate your bathroom or kitchen remodel, unit turnover, or home upgrade with our vetted, licensed contractors. One point of contact from planning through final walkthrough.</p>
             <div class="service-tagline">Renovations made easier</div>
           </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <!-- Process -->
+      <section id="process" class="process">
+        <div class="container">
+          <h2 class="section-title">How We Work</h2>
+          <p class="section-subtitle">Clear communication, quick scheduling, and careful follow-through keep your property in great shape without hassle.</p>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <h3>Share the Details</h3>
+              <p>Call, text, or email with your address, photos, and what you need. We review right away.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <h3>Quote & Schedule</h3>
+              <p>We provide a clear, written quote and schedule a time that works for you — often the same week.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <h3>On-Site & Updated</h3>
+              <p>We show up on time, send updates with photos, and keep you informed from start to finish.</p>
+            </div>
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <h3>Follow-Through</h3>
+              <p>We confirm everything meets your standards and provide maintenance options to keep it that way.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <!-- About -->
     <section id="about" class="about">
@@ -798,11 +1015,11 @@
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
-      <div class="container">
-        <h2 class="section-title" style="color:white;">What Our Clients Say</h2>
-        <div class="testimonial-grid">
-          <div class="testimonial">
+      <section id="testimonials" class="testimonials">
+        <div class="container">
+          <h2 class="section-title" style="color:white;">What Our Clients Say</h2>
+          <div class="testimonial-grid">
+            <div class="testimonial">
             <p>"These guys have managed my 6-unit building in Lynn for 3 years. Rent is always on time, tenants love them, and maintenance issues disappear fast. Best decision I ever made."</p>
             <div class="testimonial-author">— Michael R., Lynn, MA</div>
           </div>
@@ -814,14 +1031,35 @@
             <p>"Reliable snow plowing all winter — never missed a storm and always had our driveway cleared before work. Worth every penny."</p>
             <div class="testimonial-author">— Tom D., Peabody, MA</div>
           </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
+      <!-- FAQ -->
+      <section class="faq" aria-label="Frequently asked questions">
+        <div class="container">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <div class="faq-items">
+            <details>
+              <summary>Do you offer emergency service?</summary>
+              <p>Yes. Managed properties receive 24/7 emergency support for issues like leaks, heat outages, and storm damage. Call or text and we’ll dispatch right away.</p>
+            </details>
+            <details>
+              <summary>How quickly can you start?</summary>
+              <p>Most handyman, junk removal, and snow removal visits can be scheduled within a few days. Larger projects like hardscaping or remodels are scheduled after a site visit and written estimate.</p>
+            </details>
+            <details>
+              <summary>Do you work with landlords who live out of state?</summary>
+              <p>Absolutely. We manage rentals for local and out-of-state owners with transparent communication, photos, and proactive maintenance to keep your tenants happy.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2 class="section-title">Get In Touch</h2>
         <p class="section-subtitle">Call, text, or email and we’ll get back to you the same day. Tell us a little about your property or project and we’ll follow up with a clear, no-pressure quote.</p>
         
         <div class="contact-info">
@@ -852,14 +1090,19 @@
   </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 J&G Walker Properties LLC</p>
-      <p>Fully Licensed & Insured • Serving North Shore MA & Southern NH</p>
-    </div>
-  </footer>
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 J&G Walker Properties LLC</p>
+        <p>Fully Licensed & Insured • Serving North Shore MA & Southern NH</p>
+      </div>
+    </footer>
 
-  <script>
+    <a class="btn floating-cta" href="#contact" aria-label="Request a free quote">
+      <i class="fas fa-comment-dots"></i>
+      Free Quote
+    </a>
+
+    <script>
     // Mobile nav toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
